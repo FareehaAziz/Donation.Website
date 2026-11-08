@@ -1,0 +1,527 @@
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>HopeHands - Donation Website</title>
+
+<style>
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    scroll-behavior: smooth;
+    font-family: Arial, sans-serif;
+}
+
+body {
+    background: #f8f7ef;
+    color: #263c30;
+}
+
+header {
+    background: white;
+    padding: 20px 8%;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    position: sticky;
+    top: 0;
+    z-index: 100;
+    box-shadow: 0 2px 10px #0001;
+}
+
+.logo {
+    font-size: 27px;
+    font-weight: bold;
+    color: #426b50;
+}
+
+nav a {
+    text-decoration: none;
+    color: #333;
+    margin-left: 22px;
+    font-weight: bold;
+}
+
+nav a:hover {
+    color: #648b60;
+}
+
+.hero {
+    min-height: 550px;
+    display: flex;
+    align-items: center;
+    padding: 60px 8%;
+    background: linear-gradient(90deg, #e4eddf, #f8f7ef);
+    gap: 40px;
+}
+
+.hero-content {
+    flex: 1;
+}
+
+.hero h1 {
+    font-size: 52px;
+    margin-bottom: 20px;
+    line-height: 1.2;
+}
+
+.hero h1 span {
+    color: #608b64;
+}
+
+.hero p {
+    font-size: 17px;
+    line-height: 1.8;
+    margin-bottom: 25px;
+    color: #555;
+}
+
+.btn {
+    display: inline-block;
+    background: #527b58;
+    color: white;
+    padding: 14px 28px;
+    border-radius: 30px;
+    text-decoration: none;
+    border: none;
+    cursor: pointer;
+    font-size: 16px;
+    transition: .3s;
+}
+
+.btn:hover {
+    background: #34563c;
+    transform: translateY(-3px);
+}
+
+.hero-image {
+    flex: 1;
+}
+
+.hero-image img {
+    width: 100%;
+    height: 380px;
+    object-fit: cover;
+    border-radius: 20px;
+}
+
+section {
+    padding: 75px 8%;
+}
+
+.section-title {
+    text-align: center;
+    font-size: 35px;
+    margin-bottom: 15px;
+}
+
+.subtitle {
+    text-align: center;
+    color: #777;
+    margin-bottom: 40px;
+    line-height: 1.7;
+}
+
+.cards {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(230px, 1fr));
+    gap: 25px;
+}
+
+.card {
+    background: white;
+    border-radius: 15px;
+    overflow: hidden;
+    box-shadow: 0 5px 20px #0001;
+    transition: .3s;
+}
+
+.card:hover {
+    transform: translateY(-8px);
+}
+
+.card img {
+    width: 100%;
+    height: 200px;
+    object-fit: cover;
+}
+
+.card-content {
+    padding: 22px;
+}
+
+.card h3 {
+    margin-bottom: 12px;
+}
+
+.card p {
+    color: #777;
+    line-height: 1.6;
+}
+
+.progress {
+    background: #e6e6e6;
+    height: 9px;
+    border-radius: 10px;
+    margin: 15px 0;
+}
+
+.progress-bar {
+    background: #608b64;
+    height: 9px;
+    border-radius: 10px;
+}
+
+.donation {
+    background: #e6eee3;
+    text-align: center;
+}
+
+.donation-box {
+    max-width: 550px;
+    margin: auto;
+    background: white;
+    padding: 35px;
+    border-radius: 18px;
+    box-shadow: 0 5px 20px #0001;
+}
+
+.amounts {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    gap: 12px;
+    margin: 25px 0;
+}
+
+.amount {
+    padding: 12px 22px;
+    border: 1px solid #608b64;
+    background: white;
+    color: #426b50;
+    border-radius: 8px;
+    cursor: pointer;
+    font-size: 16px;
+}
+
+.amount.active,
+.amount:hover {
+    background: #527b58;
+    color: white;
+}
+
+input, textarea, select {
+    width: 100%;
+    padding: 14px;
+    margin: 10px 0;
+    border: 1px solid #ddd;
+    border-radius: 8px;
+    font-size: 15px;
+}
+
+.donation-box .btn {
+    width: 100%;
+    margin-top: 15px;
+}
+
+.about {
+    display: flex;
+    align-items: center;
+    gap: 40px;
+}
+
+.about img {
+    width: 45%;
+    border-radius: 18px;
+}
+
+.about-content {
+    flex: 1;
+}
+
+.about-content h2 {
+    font-size: 35px;
+    margin-bottom: 20px;
+}
+
+.about-content p {
+    line-height: 1.9;
+    color: #666;
+}
+
+.contact {
+    background: #e6eee3;
+    text-align: center;
+}
+
+.contact-box {
+    max-width: 550px;
+    margin: auto;
+}
+
+footer {
+    background: #263c30;
+    color: white;
+    padding: 30px;
+    text-align: center;
+}
+
+footer p {
+    margin: 8px;
+    color: #ddd;
+}
+
+@media(max-width: 768px) {
+    header {
+        flex-direction: column;
+        gap: 18px;
+    }
+
+    nav a {
+        margin: 7px;
+        font-size: 13px;
+    }
+
+    .hero, .about {
+        flex-direction: column;
+    }
+
+    .hero h1 {
+        font-size: 38px;
+    }
+
+    .hero-image img, .about img {
+        width: 100%;
+    }
+}
+</style>
+</head>
+
+<body>
+
+<header>
+    <div class="logo">♡ HopeHands</div>
+    <nav>
+        <a href="#home">Home</a>
+        <a href="#causes">Causes</a>
+        <a href="#about">About</a>
+        <a href="#donate">Donate</a>
+        <a href="#contact">Contact</a>
+    </nav>
+</header>
+
+<!-- HERO SECTION -->
+<div class="hero" id="home">
+    <div class="hero-content">
+        <h1>Give Hope. <span>Change Lives.</span></h1>
+        <p>
+            Every small act of kindness can make a big difference.
+            Join our mission to help children, support families,
+            and create a better future for everyone.
+        </p>
+        <a href="#donate" class="btn">Donate Now ❤️</a>
+    </div>
+
+    <div class="hero-image">
+        <img src="https://images.unsplash.com/photo-1488521787991-ed7bbaae773c?w=900"
+        alt="Children receiving support">
+    </div>
+</div>
+
+<!-- CAUSES -->
+<section id="causes">
+    <h2 class="section-title">Our Causes</h2>
+    <p class="subtitle">Your kindness can change someone's life.</p>
+
+    <div class="cards">
+
+        <div class="card">
+            <img src="https://images.unsplash.com/photo-1503454537195-1dcabb73ffb9?w=600">
+            <div class="card-content">
+                <h3>Help Children</h3>
+                <p>Support children with education, clothing and a brighter future.</p>
+                <div class="progress">
+                    <div class="progress-bar" style="width:75%"></div>
+                </div>
+                <p>Goal: $5,000</p>
+            </div>
+        </div>
+
+        <div class="card">
+            <img src="https://images.unsplash.com/photo-1593113598332-cd288d649433?w=600">
+            <div class="card-content">
+                <h3>Food For Everyone</h3>
+                <p>Provide healthy meals to families who need food and support.</p>
+                <div class="progress">
+                    <div class="progress-bar" style="width:60%"></div>
+                </div>
+                <p>Goal: $3,000</p>
+            </div>
+        </div>
+
+        <div class="card">
+            <img src="https://images.unsplash.com/photo-1576091160399-112ba8d25d1d?w=600">
+            <div class="card-content">
+                <h3>Medical Support</h3>
+                <p>Help people access medical care and essential medicines.</p>
+                <div class="progress">
+                    <div class="progress-bar" style="width:85%"></div>
+                </div>
+                <p>Goal: $7,000</p>
+            </div>
+        </div>
+
+    </div>
+</section>
+
+<!-- ABOUT -->
+<section id="about">
+    <div class="about">
+        <img src="https://images.unsplash.com/photo-1469571486292-0ba58a3f068b?w=900">
+
+        <div class="about-content">
+            <h2>About HopeHands</h2>
+            <p>
+                HopeHands is a donation platform created to spread
+                kindness and support people in need.
+                Our mission is to provide food, education,
+                healthcare and hope to those who need it most.
+                <br><br>
+                Together, we can build a world where everyone
+                has an opportunity to live a better life.
+            </p>
+            <br>
+            <a href="#donate" class="btn">Support Our Mission</a>
+        </div>
+    </div>
+</section>
+
+<!-- DONATION FORM -->
+<section class="donation" id="donate">
+    <h2 class="section-title">Make A Donation ❤️</h2>
+    <p class="subtitle">Your contribution can make a real difference.</p>
+
+    <div class="donation-box">
+        <h3>Select Donation Amount</h3>
+
+        <div class="amounts">
+            <button class="amount" onclick="selectAmount(500,this)">Rs. 500</button>
+            <button class="amount" onclick="selectAmount(1000,this)">Rs. 1000</button>
+            <button class="amount" onclick="selectAmount(2000,this)">Rs. 2000</button>
+            <button class="amount" onclick="selectAmount(5000,this)">Rs. 5000</button>
+        </div>
+
+        <input type="number" id="customAmount"
+        placeholder="Enter custom amount (PKR)" min="1">
+
+        <form id="donationForm">
+            <input type="text" id="name" placeholder="Your Full Name" required>
+            <input type="email" id="email" placeholder="Your Email Address" required>
+
+            <select id="cause" required>
+                <option value="">Choose Donation Cause</option>
+                <option>Education</option>
+                <option>Food Support</option>
+                <option>Medical Support</option>
+                <option>General Donation</option>
+            </select>
+
+            <button type="submit" class="btn">Donate Now ❤️</button>
+        </form>
+
+        <p id="message" style="margin-top:15px;color:green;"></p>
+    </div>
+</section>
+
+<!-- CONTACT -->
+<section class="contact" id="contact">
+    <h2 class="section-title">Contact Us</h2>
+    <p class="subtitle">Have questions? We would love to hear from you.</p>
+
+    <div class="contact-box">
+        <form id="contactForm">
+            <input type="text" placeholder="Your Name" required>
+            <input type="email" placeholder="Your Email" required>
+            <textarea rows="5" placeholder="Your Message" required></textarea>
+            <button class="btn" type="submit">Send Message</button>
+        </form>
+        <p id="contactMessage"></p>
+    </div>
+</section>
+
+<footer>
+    <h2>♡ HopeHands</h2>
+    <p>Spread Love. Share Hope. Make A Difference.</p>
+    <p>© 2026 HopeHands. All Rights Reserved.</p>
+</footer>
+
+<script>
+
+// Donation amount selection
+let selectedAmount = 0;
+
+function selectAmount(amount, button) {
+    selectedAmount = amount;
+
+    document.querySelectorAll(".amount").forEach(btn => {
+        btn.classList.remove("active");
+    });
+
+    button.classList.add("active");
+    document.getElementById("customAmount").value = "";
+}
+
+// Custom donation amount
+document.getElementById("customAmount").addEventListener("input", function() {
+    selectedAmount = Number(this.value);
+
+    document.querySelectorAll(".amount").forEach(btn => {
+        btn.classList.remove("active");
+    });
+});
+
+// Donation form
+document.getElementById("donationForm").addEventListener("submit", function(e) {
+    e.preventDefault();
+
+    const name = document.getElementById("name").value;
+    const amount = selectedAmount;
+    const cause = document.getElementById("cause").value;
+
+    if (!amount || amount <= 0) {
+        alert("Please select or enter a valid donation amount!");
+        return;
+    }
+
+    document.getElementById("message").innerHTML =
+        "Thank you " + name + "! Your Rs. " + amount +
+        " donation selection for " + cause + " has been received in this demo.";
+
+    this.reset();
+
+    selectedAmount = 0;
+
+    document.querySelectorAll(".amount").forEach(btn => {
+        btn.classList.remove("active");
+    });
+});
+
+// Contact form
+document.getElementById("contactForm").addEventListener("submit", function(e) {
+    e.preventDefault();
+
+    document.getElementById("contactMessage").innerHTML =
+        "Thank you! Your message has been submitted in this demo.";
+
+    this.reset();
+});
+
+</script>
+
+</body>
+</html>
+
+
